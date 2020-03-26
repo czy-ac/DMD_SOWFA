@@ -7,6 +7,13 @@ The higher level goal of this code is to perform Dynamic Mode Decomposition in a
 
 
 ### Data
+The program requires 2 different types of data
+
+(1) The
+
+(2)
+
+### Directories
 
 ### Control Strategy
 
@@ -16,14 +23,17 @@ The higher level goal of this code is to perform Dynamic Mode Decomposition in a
 
 ### Dynamic Mode Decomposition 
 
-### Directories
+
 
 Comments and questions:
-#### nassir.cassamo@tecnico.ulisboa pt or n.rodriguescassamo@tudelft.nl
+#### nassir.cassamo@tecnico.ulisboa.pt or n.rodriguescassamo@tudelft.nl
 
 Nassir Rodrigues Cassamo
+
 MSc. Mechanical Engineering
+
 TU Delft, Delft Center for Systems and Control (DCSC), Delft, The Netherlands
+
 Instituto Superior Técnico, Lisbon, Portugal 
 
 
