@@ -1,0 +1,6 @@
+function z = gaussian2D(par,xy)
+% compute 2D gaussian
+z = par(7) + ...
+    par(1)*exp(-(((xy{1}-par(5)).*cosd(par(2))+(xy{2}-par(6)).*sind(par(2)))./par(3)).^2-...
+    ((-(xy{1}-par(5)).*sind(par(2))+(xy{2}-par(6)).*cosd(par(2)))./par(4)).^2);
+end
