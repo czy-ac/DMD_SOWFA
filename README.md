@@ -33,8 +33,8 @@ The file name with the field velocity and grid points sampled should be specifie
 Comments and questions:
 #### nassir.cassamo@tecnico.ulisboa.pt or n.rodriguescassamo@tudelft.nl
 
-\newline Nassir Rodrigues Cassamo
-\newline MSc. Mechanical Engineering
-\newline TU Delft, Delft Center for Systems and Control (DCSC), Delft, The Netherlands
-\newline Instituto Superior Técnico, Lisbon, Portugal 
-\newline March 2020
+Nassir Rodrigues Cassamo  
+MSc. Mechanical Engineering  
+TU Delft, Delft Center for Systems and Control (DCSC), Delft, The Netherlands  
+Instituto Superior Técnico, Lisbon, Portugal   
+March 2020  
