@@ -116,7 +116,7 @@ export_fig(figure460,strcat(dirdmd,'/image','polescomplexplane'),'-nocrop','-m2'
      pp(i)=incpower;
  end
  
- figure(403)
+ fig403=figure(403);
  set(gcf,'color','w','Position', get(0, 'Screensize'),'Visible','off');
  a=1:1:length(f);
  sid=scatter(a,pp,'o');
@@ -133,6 +133,6 @@ export_fig(figure460,strcat(dirdmd,'/image','polescomplexplane'),'-nocrop','-m2'
  grid on
  grid minor
  hold off
- export_fig(figure(403),strcat(dirdmd,'/image','poweraccountedforwithsv'),'-nocrop','-m2');
+ export_fig(fig403,strcat(dirdmd,'/image','poweraccountedforwithsv'),'-nocrop','-m2');
  
 

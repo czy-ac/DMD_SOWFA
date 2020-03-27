@@ -88,7 +88,7 @@ if statesused < 100000
     subplot(5,2,9)
     plotmode(x,y,z,u,mode,Decimate,D,f,phi,P,LambdaDiag,damping)
     
-    mode=200;
+    mode=120;
     %mode=52;
     subplot(5,2,10)
     plotmode(x,y,z,u,mode,Decimate,D,f,phi,P,LambdaDiag,damping)

@@ -133,7 +133,7 @@
     else
     end
     
-    r=120; %define truncation level for Singular Value Decomposition 
+    r=200; %define truncation level for Singular Value Decomposition 
     maindir='/Volumes/NASSIR/MATLAB/'; %define directoty in user's computer to store all results
     [sys_red,FITje,U,S,V,method,X,X_p,Xd,dirdmd]=dynamicmodedecomposition(states,Inputs, Outputs, Deterministic,3,r,maindir); 
 
