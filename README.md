@@ -32,13 +32,13 @@ This is a fundamental part of the program, where the simulation data is processe
 Different states may be used for DMD. For simplicity, only the streamwise component of the velocity field can be used. However, if computational power permits, the complete flow field might be used, allowing for 3D visualisation of the Proper Orthogonal Decomposition (POD) modes. 
 
 ### G. Detrending States *preprocessstates.m* (2. Dynamic Mode Decomposition)
-The user must also decide if the base flow is removed. In the base code, the base flow - corresponding to the temporal mean for every grid point used - is subtracted from the states, which are then finally used for DMD. The choosing of the states has meaningful consequences on the DMD reconstruction and final model accuracy.
+The user must also decide if the base flow is removed. In the base code, the base flow - corresponding to the temporal mean for every grid point used - is subtracted from the states, which are then finally used for DMD. The choosing of the states has meaningful consequences on the DMD reconstruction and final model accuracy.    
 
-### H. Dynamic Mode Decomposition (2. Dynamic Mode Decomposition)
-This is where the magic happens. Several DMD algorithms exist since it was first introduced [1] and many developments are under way [2]. The user must specify which DMD algorithm should be used. The following are highlighted:
-(1) Dynamic Mode Decomposition with Control (DMDc): Standard DMD framework is further developed to separate dynamics of forced inputs. Allows to recover matrices A and B of state space model. [3]
-(2) Input-Output Dynamic Mode Decomposition (ioDMD): DMDc is further developed, allowing to use standard subspace identification methods and recover the full state space model. [4]
-(3) Extended Dynamic Mode Decomposition (extioDMD): ioDMD is extended to incorporate deterministic states, meaning states which are known and allow to improve accuracy of model. Intrinsically linked to Koopman Operator Theory [5] [6] and [7]. This modification does not perform Singular Value Decomposition on the extended states.
+### H. Dynamic Mode Decomposition (2. Dynamic Mode Decomposition) 
+This is where the magic happens. Several DMD algorithms exist since it was first introduced [1] and many developments are under way [2]. The user must specify which DMD algorithm should be used. The following are highlighted:    
+(1) Dynamic Mode Decomposition with Control (DMDc): Standard DMD framework is further developed to separate dynamics of forced inputs. Allows to recover matrices A and B of state space model. [3]    
+(2) Input-Output Dynamic Mode Decomposition (ioDMD): DMDc is further developed, allowing to use standard subspace identification methods and recover the full state space model. [4]    
+(3) Extended Dynamic Mode Decomposition (extioDMD): ioDMD is extended to incorporate deterministic states, meaning states which are known and allow to improve accuracy of model. Intrinsically linked to Koopman Operator Theory [5] [6] and [7]. This modification does not perform Singular Value Decomposition on the extended states.    
 
 [1] Peter Schmid.  Dynamic mode decomposition of numerical and experimental data.  Jour-nal of Fluid Mechanics, Cambridge University Press (CUP), 2010, 656 (August), pp.5-28 
 
