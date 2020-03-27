@@ -123,6 +123,5 @@ ax.XAxis.TickValues=0:10:200;
 grid on
 hold off
 
-shg
 set(gcf,'color','w','Position', get(0, 'Screensize'));
 export_fig(figure350,strcat(dirdmd,'/image','VAFidandval'),'-nocrop','-m2');

@@ -6,8 +6,8 @@ X2=resample(detrend(rotSpeed(end-beg*10:1:end,2)'),1,10);
 X1=X1./var(X1);
 X2=X2./var(X2);
 
-X3=resample(detrend(rotSpeed(end-beg*10:1:end,1)'),1,10).^2;
-X4=resample(detrend(rotSpeed(end-beg*10:1:end,2)'),1,10).^2;
+X3=resample(rotSpeed(end-beg*10:1:end,1)',1,10).^2;
+X4=resample(rotSpeed(end-beg*10:1:end,2)',1,10).^2;
 X3=X3./var(X3);
 X4=X4./var(X4);
 

@@ -1,11 +1,12 @@
-function []=VAFpermodes(FITje,r,Xd)
+function [fig200]=VAFpermodes(FITje,r,Xd)
 
 a=size(Xd,1);
 lastmode=r+a;
 
 vectormodes=1:1:lastmode;
 
-figure(200)
+fig200=figure(200);
+fig200.Visible='off';
 set(gcf,'color','w','Position', get(0, 'Screensize'));
 plot(FITje(1,:),'LineWidth',1.6,'color','blue'); %1
 hold on; 

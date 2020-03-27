@@ -47,5 +47,4 @@ hold off
 ytickformat('percentage')
 
 set(gcf,'color','w','Position', get(0, 'Screensize'));    
-shg
 export_fig(figure(550),strcat(dirdmd,'/image','statestimeerror'),'-nocrop','-m2'); 

@@ -58,7 +58,7 @@ end
 %% EIGENVALUE VISUALISATION 
 
 % IN COMPLEX PLANE
-figure460=figure('Position', [100 100 600 300]);
+figure460=figure('Position', [100 100 600 300],'Visible','off');
 set(gcf,'color','w','Position', get(0, 'Screensize'));
 subplot(1,2,1)
 p=plot(LambdaDiag, 'o');
@@ -95,7 +95,7 @@ grid minor
 export_fig(figure460,strcat(dirdmd,'/image','polescomplexplane'),'-nocrop','-m2');
 
 %% POWER SPECTRUM 
- figure470=figure('Position', [100 100 600 300]);
+ figure470=figure('Position', [100 100 600 300],'Visible','off');
  set(gcf,'color','w','Position', get(0, 'Screensize'));
  s=stem(f,P,'k','filled');
  grid on
@@ -117,7 +117,7 @@ export_fig(figure460,strcat(dirdmd,'/image','polescomplexplane'),'-nocrop','-m2'
  end
  
  figure(403)
- set(gcf,'color','w','Position', get(0, 'Screensize'));
+ set(gcf,'color','w','Position', get(0, 'Screensize'),'Visible','off');
  a=1:1:length(f);
  sid=scatter(a,pp,'o');
  hold on

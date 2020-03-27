@@ -93,7 +93,6 @@ if statesused < 100000
     subplot(5,2,10)
     plotmode(x,y,z,u,mode,Decimate,D,f,phi,P,LambdaDiag,damping)
     set(gcf,'color','w','Position', get(0, 'Screensize'));    
-    shg
     export_fig(fig5,strcat(dirdmd,'/image','podmodes'),'-nocrop','-m2');   
    
 elseif statesused > 100000
@@ -194,7 +193,6 @@ elseif statesused > 100000
     plotmode(x,y,z,v,mode,Decimate,D,f,phi,P,LambdaDiag,damping)
     
     set(gcf,'color','w','Position', get(0, 'Screensize'));    
-    shg
     export_fig(fig6,strcat(dirdmd,'/image','podmodesv'),'-nocrop','-m2'); 
 end
 

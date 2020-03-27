@@ -133,8 +133,9 @@
     else
     end
     
-    r=200; %define truncation level for Singular Value Decomposition 
-    [sys_red,FITje,U,S,V,method,X,X_p,Xd,dirdmd]=dynamicmodedecomposition(states,Inputs, Outputs, Deterministic,3,r); 
+    r=120; %define truncation level for Singular Value Decomposition 
+    maindir='/Volumes/NASSIR/MATLAB/'; %define directoty in user's computer to store all results
+    [sys_red,FITje,U,S,V,method,X,X_p,Xd,dirdmd]=dynamicmodedecomposition(states,Inputs, Outputs, Deterministic,3,r,maindir); 
 
 %% (3) DATA VALIDATION 
     % Validate Models from validation data set

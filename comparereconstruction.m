@@ -57,7 +57,6 @@ function []=comparereconstruction(states, statesrebuild,D,dirdmd,x,y,z,Decimate,
     titlee.FontSize=18;
     
     set(gcf,'color','w','Position', get(0, 'Screensize'));    
-    shg
     export_fig(fig500,strcat(dirdmd,'/image','reconsversusSOWFA'),'-nocrop','-m2'); 
  
    
@@ -102,7 +101,6 @@ function []=comparereconstruction(states, statesrebuild,D,dirdmd,x,y,z,Decimate,
     
     
     set(gcf,'color','w','Position', get(0, 'Screensize'));    
-    shg
     export_fig(fig502,strcat(dirdmd,'/image','reconsversusSOWFA2'),'-nocrop','-m2'); 
     
     

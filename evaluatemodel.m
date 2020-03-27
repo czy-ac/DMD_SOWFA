@@ -1,4 +1,4 @@
-function [FITje,OMEGA,DAMPING]=evaluatemodel(sys_red,si,Inputs, Outputs,FITje,OMEGA,DAMPING,purpose)
+function [FITje,OMEGA,DAMPING,fig1]=evaluatemodel(sys_red,si,Inputs, Outputs,FITje,OMEGA,DAMPING,purpose)
 dN=2;
 %Estimate the initial state, given the estimated system matrices, and a  set of input/output data.
 
@@ -18,7 +18,8 @@ if a
     FITje(:,si)=vaf(ysim,[Outputs]');
 
     %% GRAPHICAL VISUALISAITON OF MODEL PREDICTION AND TRUE SIMULATION (IDENTIFICATION) RESULTS
-    figure(1000+si)
+    fig1=figure(1000+si);
+    fig1.Visible='off';
     set(gcf,'color','w','Position', get(0, 'Screensize'));
     subplot(2,1,1)
     plot([Outputs(1,1:end-1);]','LineWidth',1.6'); %1
@@ -49,7 +50,8 @@ else
      ysim_val=lsim(sys_red{si}, [Inputs]',[],xo_val);  
      FITje(:,si)=vaf(ysim_val,[Outputs]');  
     
-    figure(2000+si)
+    fig1=figure(2000+si);
+    fig1.Visible='off';
     set(gcf,'color','w','Position', get(0, 'Screensize'));
     subplot(2,1,1)
     plot([Outputs(1,1:end-1);]','LineWidth',1.6'); %1
@@ -62,7 +64,7 @@ else
     legend({'Real simulated rotor speed','Model Output',''},'Location','southeast')
     set(gca,'fontsize', 14)
              
-    subplot(2,1,2)
+    subplot(2,1,2,'Visible','off')
     plot([Outputs(2,1:end-1)]','LineWidth',1.6'); %1
     hold on; 
     plot(ysim_val(:,2),'g--','LineWidth',1.6)

@@ -58,7 +58,6 @@ function []=evauatemodelerror(states, statesrebuild,D,dirdmd,filename,dirName,x,
     hold off 
     
     set(gcf,'color','w','Position', get(0, 'Screensize'));    
-    shg
     export_fig(fig503,strcat(dirdmd,'/image','onetimeerror'),'-nocrop','-m2'); 
     
     %% EVALUATE INSTANTANEOUS ERROR
@@ -140,7 +139,6 @@ function []=evauatemodelerror(states, statesrebuild,D,dirdmd,filename,dirName,x,
     titlee.FontSize=18;
     
     set(gcf,'color','w','Position', get(0, 'Screensize'));    
-    shg
     export_fig(fig505,strcat(dirdmd,'/image','errorvariationtime2'),'-nocrop','-m2'); 
     
     

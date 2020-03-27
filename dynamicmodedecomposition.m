@@ -1,4 +1,4 @@
-function [sys_red,FITje,U,S,V,method,X,X_p,Xd,dirdmd]=dynamicmodedecomposition(states, Inputs, Outputs, Deterministic ,method,r)
+function [sys_red,FITje,U,S,V,method,X,X_p,Xd,dirdmd]=dynamicmodedecomposition(states, Inputs, Outputs, Deterministic ,method,r,maindir)
 
 % This function aims to build a reduced order model from the states,
 % input/output information and deterministic states gathered in the
@@ -53,7 +53,8 @@ Xd_p   =Deterministic(:,2:end);
 
 if method==1 %dmdc algortihm
     
-     dirdmd='/Volumes/NASSIR/MATLAB/DMDresults_DMDc';
+     dirdmd='DMDresults_DMDc';
+     dirdmd=strcat(maindir,dirdmd);
     if ~exist(dirdmd,'dir') 
         mkdir(dirdmd);
     end
@@ -124,16 +125,16 @@ if method==1 %dmdc algortihm
         approxC{si}=[Y1(:,1:end-1);Y2(:,1:end-1)]*pinv(([So(1:si,1:si)*Vo(:,1:si)'; U1(:,1:end-1)]));
         sys_red{si}=ss(approxA{si},approxB{si},approxC{si}(:,1:si),approxC{si}(:,si+1:end),2);
               
-        [FITje,OMEGA,DAMPING]=evaluatemodel(sys_red,si,Inputs,Outputs,FITje,OMEGA,DAMPING,'identification');
+        [FITje,OMEGA,DAMPING,fig1]=evaluatemodel(sys_red,si,Inputs,Outputs,FITje,OMEGA,DAMPING,'identification');
         warning off
-        export_fig(figure(1000+si),strcat(dirdmd,'/image',num2str(10000+si)),'-nocrop','-m2')
+        export_fig(fig1,strcat(dirdmd,'/image',num2str(10000+si)),'-nocrop','-m2')
         warning on
     end
         
     close all
-    VAFpermodes(FITje,r,{})
+    [fig200]=VAFpermodes(FITje,r,{});
     warning off
-    export_fig(figure(200),strcat(dirdmd,'/image',num2str(10000+si+1)),'-nocrop','-m2')
+    export_fig(fig200,strcat(dirdmd,'/image',num2str(10000+si+1)),'-nocrop','-m2')
     warning on
            
   %% (2) ioDMD: Input Output Dynamic Mode Decomposition 
@@ -144,12 +145,14 @@ elseif method==2 %ioDMD
     %state space system may be obtained via usual subspace system
     %identification methods, estimating matrices A,B,C,D via lieast squares
     
-    dirdmd='/Volumes/NASSIR/MATLAB/DMDresults_ioDMD';
+    dirdmd='DMDresults_ioDMD';
+    dirdmd=strcat(maindir,dirdmd);
     if ~exist(dirdmd,'dir') 
         mkdir(dirdmd);
     end
     
-    dirdmdident='/Volumes/NASSIR/MATLAB/DMDresults_ioDMD/ident';
+    dirdmdident='DMDresults_ioDMD/ident';
+    dirdmdident=strcat(maindir,dirdmdident);
     if ~exist(dirdmdident,'dir') 
         mkdir(dirdmdident);
     end
@@ -174,16 +177,16 @@ elseif method==2 %ioDMD
         
         sys_red{si}=ss(A{si},B{si},C{si},D{si},2);
            
-        [FITje,OMEGA,DAMPING]=evaluatemodel(sys_red,si,Inputs,Outputs,FITje,OMEGA,DAMPING,'identification');
+        [FITje,OMEGA,DAMPING,fig1]=evaluatemodel(sys_red,si,Inputs,Outputs,FITje,OMEGA,DAMPING,'identification');
         warning off
-        export_fig(figure(1000+si),strcat(dirdmdident,'/image',num2str(10000+si)),'-nocrop','-m2')
+        export_fig(fig1,strcat(dirdmdident,'/image',num2str(10000+si)),'-nocrop','-m2')
         warning on
         close all
     end
         
-    VAFpermodes(FITje,r,{})
+    [fig200]=VAFpermodes(FITje,r,{});
     warning off
-    export_fig(figure(200),strcat(dirdmdident,'/image',num2str(1000+length(sys_red)+1)),'-nocrop','-m2')
+    export_fig(fig200,strcat(dirdmdident,'/image',num2str(1000+length(sys_red)+1)),'-nocrop','-m2')
     warning on
     Xd={};
     
@@ -202,12 +205,14 @@ elseif method==3
     %to as determinisitc states, as they are measurable and known for the
     %current scenario
     
-    dirdmd='/Volumes/NASSIR/MATLAB/DMDresults_extioDMD';
+    dirdmd='DMDresults_extioDMD';
+    dirdmd=strcat(maindir,dirdmd);
         if ~exist(dirdmd,'dir') 
             mkdir(dirdmd);
         end
         
-    dirdmdident='/Volumes/NASSIR/MATLAB/DMDresults_extioDMD/ident';
+    dirdmdident='DMDresults_extioDMD/ident';
+    dirdmdident=strcat(maindir,dirdmdident);
         if ~exist(dirdmdident,'dir') 
             mkdir(dirdmdident);
         end    
@@ -233,23 +238,24 @@ elseif method==3
         sys_red{si}=ss(A{si},B{si},C{si},D{si},2);
         %same as before
            
-        [FITje,OMEGA,DAMPING]=evaluatemodel(sys_red,si,Inputs,Outputs,FITje,OMEGA,DAMPING,'identification');
+        [FITje,OMEGA,DAMPING,fig1]=evaluatemodel(sys_red,si,Inputs,Outputs,FITje,OMEGA,DAMPING,'identification');
         warning off
-        export_fig(figure(1000+si),strcat(dirdmdident,'/image',num2str(10000+si)),'-nocrop','-m2')
+        export_fig(fig1,strcat(dirdmdident,'/image',num2str(10000+si)),'-nocrop','-m2')
         warning on
         close all
     end
         
-    VAFpermodes(FITje,r,{})
+    [fig200]=VAFpermodes(FITje,r,{});
     warning off
-    export_fig(figure(200),strcat(dirdmdident,'/image',num2str(1000+length(sys_red)+1)),'-nocrop','-m2')
+    export_fig(fig200,strcat(dirdmdident,'/image',num2str(1000+length(sys_red)+1)),'-nocrop','-m2')
     warning on
            
     
 elseif method==4
     %% Professor Wingerden Least Square Solution for state space problem
 
-    dirdmd='/Volumes/NASSIR/MATLAB/DMDresults_Wing';
+    dirdmd='DMDresults_Wing';
+    dirdmd=strcat(maindir,dirdmd);
     if ~exist(dirdmd,'dir') 
         mkdir(dirdmd);
     end
@@ -332,16 +338,16 @@ elseif method==4
         
         sys_red{si}=ss(At{si},Bt{si},Ct{si}, Dt{si},2);
         
-        [FITje,OMEGA,DAMPING]=evaluatemodel(sys_red,si,Inputs,Outputs,FITje,OMEGA,DAMPING,'identification');
+        [FITje,OMEGA,DAMPING,fig1]=evaluatemodel(sys_red,si,Inputs,Outputs,FITje,OMEGA,DAMPING,'identification');
         
         warning off
-        export_fig(figure(1000+si),strcat(dirdmd,'/image',num2str(10000+si)),'-nocrop','-m2')
+        export_fig(fig1,strcat(dirdmd,'/image',num2str(10000+si)),'-nocrop','-m2')
         warning on
         close all
     end
-        VAFpermodes(FITje,r,Xd)
+        [fig200]=VAFpermodes(FITje,r,{});
         warning off
-        export_fig(figure(200),strcat(dirdmd,'/image',num2str(10000+si+1)),'-nocrop','-m2')
+        export_fig(fig200,strcat(dirdmd,'/image',num2str(10000+si+1)),'-nocrop','-m2')
         warning on
            
 end    
